@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generator": "fomoxac 0.2.0",
+  "schema_fingerprint": "sha256:322c6aea8367265cfcbf2b06bbd1cc7330ea213e1bb44fa843e3ddf58bf8c463",
+  "sha256_of": "each file with its `// generated-at:` line emptied, so an unchanged schema keeps an unchanged digest",
+  "sources": {
+    "src/models/messages.rs": {
+      "models": [
+        "Chat",
+        "Input",
+        "Stats",
+        "Transform",
+        "TransformBatch"
+      ],
+      "outputs": [
+        {
+          "path": "src/generated/chat_bench.rs",
+          "model": "Chat",
+          "codec": "bench",
+          "fingerprint": "sha256:5ea5fa207d7b83a566d10b9da55e3dd99d6dbb014901ff9bf9f57dcd0e671710",
+          "sha256": "f2b59af9396fd6529739c7c8831659b757d092b226958dd504962055e0bd7b60"
+        },
+        {
+          "path": "src/generated/input_bench.rs",
+          "model": "Input",
+          "codec": "bench",
+          "fingerprint": "sha256:6a3b0bc4accf0d16cc1a6ed960a2e4d50dd1cb7887deadd50b2db49e2d35728f",
+          "sha256": "2c89f21e3d13e4b12ab1c2b0d04f6966462875b60b6baf14795885f18761c539"
+        },
+        {
+          "path": "src/generated/stats_bench.rs",
+          "model": "Stats",
+          "codec": "bench",
+          "fingerprint": "sha256:7322a8d687cc0d2cd90c982d82b4fd40bfed54916de4f0f7164e21d9d89a286d",
+          "sha256": "4af023c23a38c50abafdf42350bcc00745d7eae72be76e83851c75aaf5ae1a89"
+        },
+        {
+          "path": "src/generated/transform_bench.rs",
+          "model": "Transform",
+          "codec": "bench",
+          "fingerprint": "sha256:af0a5d915a3767a6ae11edf196874f6b2460cbb7b1c35ad13d9573abb5489f5c",
+          "sha256": "f5b6605927b02c4189550716989870cb239ae09dc18321af969b7d321d5b2070"
+        },
+        {
+          "path": "src/generated/transform_batch_bench.rs",
+          "model": "TransformBatch",
+          "codec": "bench",
+          "fingerprint": "sha256:2882ae19256df95ed1d76420f6599b05b02e14ded2d4fe5d0536a7bec11da15f",
+          "sha256": "eb6f6665b3a3a406a67e45a644d4e0969d6fea8fb169c0c486208a092984e77a"
+        }
+      ]
+    }
+  },
+  "shared": [
+    {
+      "path": "src/generated/runtime.rs",
+      "kind": "runtime",
+      "sha256": "7111781991144c7d29597664dfeb69c681f07095a2562f54ae49282ec5a2f6b2"
+    },
+    {
+      "path": "src/generated/handshake.rs",
+      "kind": "handshake",
+      "sha256": "11556441977ebc8c5cfb467674fba3709f1c1702a83037c48eb4a7ab5a49b808"
+    },
+    {
+      "path": "src/generated/mod.rs",
+      "kind": "root",
+      "sha256": "813d7b15855d943eb2e8ba37c32d6b5ee9175a01896ba7cae65479effee325c5"
+    }
+  ]
+}

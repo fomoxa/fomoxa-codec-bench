@@ -1,0 +1,20 @@
+[package]
+name = "fomoxa-codec-bench"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "codec"
+path = "src/bin/codec.rs"
+
+[[bin]]
+name = "tcp"
+path = "src/bin/tcp.rs"
+
+[dependencies]
+fomoxa-attributes = "0.1.1"
+prost = "0.14"
+
+[profile.release]
+debug = false

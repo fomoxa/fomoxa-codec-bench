@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "generator": "fomoxac 0.2.0",
+  "fingerprint": "sha256:322c6aea8367265cfcbf2b06bbd1cc7330ea213e1bb44fa843e3ddf58bf8c463",
+  "fingerprint_u64": "0x322C6AEA8367265C",
+  "models": {
+    "Chat": {
+      "source": "src/models/messages.rs",
+      "fingerprint": "sha256:9d694092351f2496d49cf09c02fb02e1399c45bdd2e3a3306e106d41d7e4aa24",
+      "codecs": [
+        "bench"
+      ],
+      "fields": [
+        {
+          "name": "sender_id",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "channel",
+          "type": "u16",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "sent_at_millis",
+          "type": "u64",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "codecs": [
+            "bench"
+          ]
+        }
+      ],
+      "messages": {
+        "bench": {
+          "id": "0xFAE6D8AC",
+          "fingerprint": "sha256:5ea5fa207d7b83a566d10b9da55e3dd99d6dbb014901ff9bf9f57dcd0e671710",
+          "fingerprint_u64": "0x5EA5FA207D7B83A5",
+          "prefixes": [
+            "sha256:106f4d649a28ff0aa6089733464862ca53e38573ec1dd7ec23e5e28d2ed21466",
+            "sha256:00208c31ce77b072187860ca3ee37d0e51910ae5328512ecddb1e2a6a58e6cf1",
+            "sha256:38874799557d031861ad805f4dd2279c5122eacf8e3d1458b8e2f48170e659c5",
+            "sha256:5ea5fa207d7b83a566d10b9da55e3dd99d6dbb014901ff9bf9f57dcd0e671710"
+          ],
+          "prefixes_u64": [
+            "0x106F4D649A28FF0A",
+            "0x00208C31CE77B072",
+            "0x38874799557D0318",
+            "0x5EA5FA207D7B83A5"
+          ],
+          "fields": [
+            {
+              "name": "sender_id",
+              "type": "u32"
+            },
+            {
+              "name": "channel",
+              "type": "u16"
+            },
+            {
+              "name": "sent_at_millis",
+              "type": "u64"
+            },
+            {
+              "name": "text",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    "Input": {
+      "source": "src/models/messages.rs",
+      "fingerprint": "sha256:adf35bb734fcfadd29d0eee0138d58aaa5af1c7ac62fa86c3d6167bb2fc000ae",
+      "codecs": [
+        "bench"
+      ],
+      "fields": [
+        {
+          "name": "sequence",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "move_x",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "move_z",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "jump",
+          "type": "bool",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "look_yaw",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "look_pitch",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        }
+      ],
+      "messages": {
+        "bench": {
+          "id": "0xD822007A",
+          "fingerprint": "sha256:6a3b0bc4accf0d16cc1a6ed960a2e4d50dd1cb7887deadd50b2db49e2d35728f",
+          "fingerprint_u64": "0x6A3B0BC4ACCF0D16",
+          "prefixes": [
+            "sha256:bdb01efb58664252d8fcc6fe5b1552c0af4f95d51509c58dd514887d4500ce20",
+            "sha256:1d58d2d2976f24378b8cb39414b77e48c699a790604759b20762796531bb0591",
+            "sha256:9599f589c800c36b51e07ac6bed85a415e03c21473838fa420d7e69cd5aca504",
+            "sha256:95a0c5d1229c67fdb927bdeb7f1ae53ab6d69d6193b1c81b7bc164bb3932124b",
+            "sha256:52cff84844c462bb6987e2b403f69a66aaa6357c0f343e0f9654d6f1f70b9e64",
+            "sha256:6a3b0bc4accf0d16cc1a6ed960a2e4d50dd1cb7887deadd50b2db49e2d35728f"
+          ],
+          "prefixes_u64": [
+            "0xBDB01EFB58664252",
+            "0x1D58D2D2976F2437",
+            "0x9599F589C800C36B",
+            "0x95A0C5D1229C67FD",
+            "0x52CFF84844C462BB",
+            "0x6A3B0BC4ACCF0D16"
+          ],
+          "fields": [
+            {
+              "name": "sequence",
+              "type": "u32"
+            },
+            {
+              "name": "move_x",
+              "type": "f32"
+            },
+            {
+              "name": "move_z",
+              "type": "f32"
+            },
+            {
+              "name": "jump",
+              "type": "bool"
+            },
+            {
+              "name": "look_yaw",
+              "type": "f32"
+            },
+            {
+              "name": "look_pitch",
+              "type": "f32"
+            }
+          ]
+        }
+      }
+    },
+    "Stats": {
+      "source": "src/models/messages.rs",
+      "fingerprint": "sha256:6900178b92ded8253cbb33e7b52648732dd3388f86b8177ce18bde6633fe7258",
+      "codecs": [
+        "bench"
+      ],
+      "fields": [
+        {
+          "name": "player_id",
+          "type": "u64",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "u16",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "health",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "mana",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "gold",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "experience",
+          "type": "u64",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "kills",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "deaths",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        }
+      ],
+      "messages": {
+        "bench": {
+          "id": "0xB6464827",
+          "fingerprint": "sha256:7322a8d687cc0d2cd90c982d82b4fd40bfed54916de4f0f7164e21d9d89a286d",
+          "fingerprint_u64": "0x7322A8D687CC0D2C",
+          "prefixes": [
+            "sha256:4d60a7c3f470d2dd30289daf14c042686742f943bffc98e0d690c66d33c5ddd7",
+            "sha256:9d88bc83297300674d3b46497a2f92d6f2513b9b75e700f5aaa1c867a2bd6646",
+            "sha256:9ee414d166fc62846f712955aeba49a4c5c2d3462eebbf80c0c39e09d4175211",
+            "sha256:be6942225ddf263da387472cb730257456347843c3d0ec4e4b605de8863d3cc0",
+            "sha256:5d4533fdde0dd20574680d20c84fca43f89023fa9c3cc039cb3fec5c7e00f660",
+            "sha256:67f23980416065331b838a4e826d313d0e09a5895d920083e4a9a0079a86dc4c",
+            "sha256:cee1b4b9940a70e9342080456da765a572c0efc56a893cfd8ff1eb614705ca4f",
+            "sha256:7322a8d687cc0d2cd90c982d82b4fd40bfed54916de4f0f7164e21d9d89a286d"
+          ],
+          "prefixes_u64": [
+            "0x4D60A7C3F470D2DD",
+            "0x9D88BC8329730067",
+            "0x9EE414D166FC6284",
+            "0xBE6942225DDF263D",
+            "0x5D4533FDDE0DD205",
+            "0x67F2398041606533",
+            "0xCEE1B4B9940A70E9",
+            "0x7322A8D687CC0D2C"
+          ],
+          "fields": [
+            {
+              "name": "player_id",
+              "type": "u64"
+            },
+            {
+              "name": "level",
+              "type": "u16"
+            },
+            {
+              "name": "health",
+              "type": "u32"
+            },
+            {
+              "name": "mana",
+              "type": "u32"
+            },
+            {
+              "name": "gold",
+              "type": "u32"
+            },
+            {
+              "name": "experience",
+              "type": "u64"
+            },
+            {
+              "name": "kills",
+              "type": "u32"
+            },
+            {
+              "name": "deaths",
+              "type": "u32"
+            }
+          ]
+        }
+      }
+    },
+    "Transform": {
+      "source": "src/models/messages.rs",
+      "fingerprint": "sha256:4517572cc5b1f39ddc7d3704332b035c51a84819b8192e7bca285e8fb2ac9159",
+      "codecs": [
+        "bench"
+      ],
+      "fields": [
+        {
+          "name": "entity_id",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "kind",
+          "type": "u8",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "color",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "position_x",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "position_y",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "position_z",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "yaw",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "pitch",
+          "type": "f32",
+          "codecs": [
+            "bench"
+          ]
+        }
+      ],
+      "messages": {
+        "bench": {
+          "id": "0xE1FBB898",
+          "fingerprint": "sha256:af0a5d915a3767a6ae11edf196874f6b2460cbb7b1c35ad13d9573abb5489f5c",
+          "fingerprint_u64": "0xAF0A5D915A3767A6",
+          "prefixes": [
+            "sha256:a7c49fad5f1592f5b26bd5b1134db426774662059937415b393d89d8e6aa8924",
+            "sha256:8c80b2653736e9f6a7b801f0b510bca5e82b5d804ec25a3ed79a7589eeec56d6",
+            "sha256:999155b93356ddd775ae8d310325c523d74946d065d6e9f15944a12ce7d930c4",
+            "sha256:cc3b6733d2491322f59630502411165372ee35d8962e023dfaab24b45bd356a9",
+            "sha256:18d8f1517d05b9c940aea0ca44debeb5a6d89292b1b57ab551aabaa6142f5657",
+            "sha256:7bf2c1444aeeeb10287179ab58e376bf39335a5f53454a34fbb03f2300311bcc",
+            "sha256:f60d1a4b8517d32074cd48e23f6287f8f1241ae06d2355db03108ebabde20208",
+            "sha256:af0a5d915a3767a6ae11edf196874f6b2460cbb7b1c35ad13d9573abb5489f5c"
+          ],
+          "prefixes_u64": [
+            "0xA7C49FAD5F1592F5",
+            "0x8C80B2653736E9F6",
+            "0x999155B93356DDD7",
+            "0xCC3B6733D2491322",
+            "0x18D8F1517D05B9C9",
+            "0x7BF2C1444AEEEB10",
+            "0xF60D1A4B8517D320",
+            "0xAF0A5D915A3767A6"
+          ],
+          "fields": [
+            {
+              "name": "entity_id",
+              "type": "u32"
+            },
+            {
+              "name": "kind",
+              "type": "u8"
+            },
+            {
+              "name": "color",
+              "type": "u32"
+            },
+            {
+              "name": "position_x",
+              "type": "f32"
+            },
+            {
+              "name": "position_y",
+              "type": "f32"
+            },
+            {
+              "name": "position_z",
+              "type": "f32"
+            },
+            {
+              "name": "yaw",
+              "type": "f32"
+            },
+            {
+              "name": "pitch",
+              "type": "f32"
+            }
+          ]
+        }
+      }
+    },
+    "TransformBatch": {
+      "source": "src/models/messages.rs",
+      "fingerprint": "sha256:60d168df10cf3c79a079438280b29d60e7bbaa2d86cebad4a2badc510ee08112",
+      "codecs": [
+        "bench"
+      ],
+      "fields": [
+        {
+          "name": "sequence",
+          "type": "u32",
+          "codecs": [
+            "bench"
+          ]
+        },
+        {
+          "name": "transforms",
+          "type": "Array<Transform>",
+          "codecs": [
+            "bench"
+          ]
+        }
+      ],
+      "messages": {
+        "bench": {
+          "id": "0x46F56206",
+          "fingerprint": "sha256:2882ae19256df95ed1d76420f6599b05b02e14ded2d4fe5d0536a7bec11da15f",
+          "fingerprint_u64": "0x2882AE19256DF95E",
+          "prefixes": [
+            "sha256:ac364bcdd78fb7acefce7b0a59b3651c7c2b47413ba6aa0be329657845c8b436",
+            "sha256:2882ae19256df95ed1d76420f6599b05b02e14ded2d4fe5d0536a7bec11da15f"
+          ],
+          "prefixes_u64": [
+            "0xAC364BCDD78FB7AC",
+            "0x2882AE19256DF95E"
+          ],
+          "fields": [
+            {
+              "name": "sequence",
+              "type": "u32"
+            },
+            {
+              "name": "transforms",
+              "type": "Array<Transform>"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
