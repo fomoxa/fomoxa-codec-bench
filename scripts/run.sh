@@ -8,6 +8,7 @@ millis=500
 repeats=5
 seconds=3
 messages=""
+formats=""
 modes=""
 out="${TMPDIR:-/tmp}/fomoxa-codec-bench/results.md"
 
@@ -15,9 +16,10 @@ usage() {
     cat >&2 <<EOF
 usage: scripts/run.sh [--millis=500] [--repeats=5] [--seconds=3]
                       [--messages=input,transform,batch-10,batch-100,batch-1000,chat,stats]
+                      [--formats=fomoxa,protobuf,capnp,capnp-canonical]
                       [--modes=buffered,unbuffered,echo] [--out=<file>]
 
-  1. codec: size, encode and decode time of every sample in both formats
+  1. codec: size, encode and decode time of every sample in every format
      (each cell is the median of --repeats runs of --millis)
   2. tcp:   the same samples sent over loopback TCP, --seconds per cell:
             buffered and unbuffered one-way streams, and request/response echo
@@ -33,6 +35,7 @@ for argument in "$@"; do
         --repeats=*) repeats="${argument#*=}" ;;
         --seconds=*) seconds="${argument#*=}" ;;
         --messages=*) messages="${argument#*=}" ;;
+        --formats=*) formats="${argument#*=}" ;;
         --modes=*) modes="${argument#*=}" ;;
         --out=*) out="${argument#*=}" ;;
         -h | --help) usage ;;
@@ -48,6 +51,7 @@ mkdir -p "$(dirname "$out")"
 
 selection=()
 [[ -n "$messages" ]] && selection+=(--messages "$messages")
+[[ -n "$formats" ]] && selection+=(--formats "$formats")
 mode_selection=()
 [[ -n "$modes" ]] && mode_selection+=(--modes "$modes")
 

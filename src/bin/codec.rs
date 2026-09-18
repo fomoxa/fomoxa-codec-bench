@@ -17,6 +17,7 @@ struct Measured {
 struct Table {
     duration: Duration,
     repeats: usize,
+    formats: Vec<Format>,
 }
 
 impl Table {
@@ -47,36 +48,46 @@ impl Table {
 
 impl Visitor for Table {
     fn visit<M: Pair>(&mut self, sample: &Sample<M>) {
-        let fomoxa = self.measure(Format::Fomoxa, sample);
-        let protobuf = self.measure(Format::Protobuf, sample);
-        let saved = (1.0 - fomoxa.bytes as f64 / protobuf.bytes as f64) * 100.0;
+        let measured: Vec<(Format, Measured)> = self
+            .formats
+            .iter()
+            .map(|&format| (format, self.measure(format, sample)))
+            .collect();
+        let fomoxa = measured
+            .iter()
+            .find(|(format, _)| *format == Format::Fomoxa)
+            .map(|(_, fomoxa)| fomoxa);
         let throughput = |measured: &Measured, nanos: f64| {
             measured.bytes as f64 / nanos * 1e9 / (1024.0 * 1024.0)
         };
-        println!(
-            "| {} | {} | {} B | {} B | {:+.0}% | {} · {} MiB/s | {} · {} MiB/s | {:.1}x | {} · {} MiB/s | {} · {} MiB/s | {:.1}x |",
-            sample.name,
-            sample.data,
-            thousands(fomoxa.bytes as f64),
-            thousands(protobuf.bytes as f64),
-            -saved,
-            nanos(fomoxa.encode_nanos),
-            thousands(throughput(&fomoxa, fomoxa.encode_nanos)),
-            nanos(protobuf.encode_nanos),
-            thousands(throughput(&protobuf, protobuf.encode_nanos)),
-            protobuf.encode_nanos / fomoxa.encode_nanos,
-            nanos(fomoxa.decode_nanos),
-            thousands(throughput(&fomoxa, fomoxa.decode_nanos)),
-            nanos(protobuf.decode_nanos),
-            thousands(throughput(&protobuf, protobuf.decode_nanos)),
-            protobuf.decode_nanos / fomoxa.decode_nanos,
-        );
+        for (format, measured) in &measured {
+            let versus = |compare: fn(&Measured, &Measured) -> String| match fomoxa {
+                Some(fomoxa) if *format != Format::Fomoxa => compare(fomoxa, measured),
+                _ => "-".to_owned(),
+            };
+            println!(
+                "| {} | {} | {} | {} B | {} | {} · {} MiB/s | {} | {} · {} MiB/s | {} |",
+                sample.name,
+                sample.data,
+                format.name(),
+                thousands(measured.bytes as f64),
+                versus(|fomoxa, other| format!("{:+.0}%", (fomoxa.bytes as f64 / other.bytes as f64 - 1.0) * 100.0)),
+                nanos(measured.encode_nanos),
+                thousands(throughput(measured, measured.encode_nanos)),
+                versus(|fomoxa, other| format!("{:.1}x", other.encode_nanos / fomoxa.encode_nanos)),
+                nanos(measured.decode_nanos),
+                thousands(throughput(measured, measured.decode_nanos)),
+                versus(|fomoxa, other| format!("{:.1}x", other.decode_nanos / fomoxa.decode_nanos)),
+            );
+        }
     }
 }
 
 fn main() {
     if cli::has_flag("--help") || cli::has_flag("-h") {
-        eprintln!("usage: codec [--messages input,transform,batch-10,batch-100,batch-1000,chat,stats] [--millis 200] [--repeats 5]");
+        eprintln!(
+            "usage: codec [--messages input,transform,batch-10,batch-100,batch-1000,chat,stats]\n             [--formats fomoxa,protobuf,capnp,capnp-canonical] [--millis 200] [--repeats 5]"
+        );
         exit(2);
     }
     let millis = cli::flag("--millis")
@@ -87,16 +98,29 @@ fn main() {
         .and_then(|value| value.parse::<usize>().ok())
         .unwrap_or(5)
         .max(1);
+    let formats: Vec<Format> = match cli::flag("--formats") {
+        Some(list) => list
+            .split(',')
+            .map(|name| {
+                Format::parse(name).unwrap_or_else(|| {
+                    eprintln!("codec: unknown format {name}");
+                    exit(2);
+                })
+            })
+            .collect(),
+        None => Format::ALL.to_vec(),
+    };
     let messages = cli::flag("--messages");
 
-    println!("codec: every cell is the median of {repeats} runs of {millis} ms; size change is Fomoxa relative to Protobuf");
+    println!("codec: every cell is the median of {repeats} runs of {millis} ms; the \"Fomoxa vs\" columns compare Fomoxa with the format of that row");
     println!();
-    println!("| Message | Data | Fomoxa size | Protobuf size | Size vs Protobuf | Fomoxa encode | Protobuf encode | Encode speedup | Fomoxa decode | Protobuf decode | Decode speedup |");
-    println!("|---|---|---|---|---|---|---|---|---|---|---|");
+    println!("| Message | Data | Format | Size | Fomoxa size vs | Encode | Fomoxa encode speedup | Decode | Fomoxa decode speedup |");
+    println!("|---|---|---|---|---|---|---|---|---|");
     samples::visit_all(
         &mut Table {
             duration: Duration::from_millis(millis),
             repeats,
+            formats,
         },
         messages.as_deref(),
     );
