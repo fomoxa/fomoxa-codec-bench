@@ -276,7 +276,7 @@ impl Visitor for Runner {
 fn main() {
     if cli::has_flag("--help") || cli::has_flag("-h") {
         eprintln!(
-            "usage: tcp [--messages input,transform,batch-10,batch-100,batch-1000,chat,stats]\n           [--modes buffered,unbuffered,echo] [--formats fomoxa,protobuf] [--seconds 3]"
+            "usage: tcp [--messages input,transform,batch-10,batch-100,batch-1000,chat,stats]\n           [--modes buffered,unbuffered,echo] [--formats fomoxa,protobuf,capnp,capnp-canonical] [--seconds 3]"
         );
         exit(2);
     }

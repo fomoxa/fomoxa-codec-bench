@@ -13,6 +13,7 @@ name = "tcp"
 path = "src/bin/tcp.rs"
 
 [dependencies]
+capnp = "0.27"
 fomoxa-attributes = "0.1.1"
 prost = "0.14"
 
